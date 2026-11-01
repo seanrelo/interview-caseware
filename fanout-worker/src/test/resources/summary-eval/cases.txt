@@ -1,0 +1,63 @@
+# Synthetic template-diff cases. No real template or EF content.
+case added-sections
+pair T-synth v1 v2
+item a1 | $.sections[0] | Revenue | new section added
+item a2 | $.sections[1] | Inventory | new section added
+support added-revenue | a1
+support added-inventory | a2
+expect a1,a2
+end
+
+case removed-sections
+pair T-synth v2 v3
+item r1 | $.sections[4] | Leases | section removed
+item r2 | $.sections[5].steps[2] | Leases | step removed
+support removed-section | r1
+support removed-step | r2
+expect r1,r2
+end
+
+case changed-sections
+pair T-synth v3 v4
+item c1 | $.sections[1].title | Inventory | title reworded
+item c2 | $.sections[2].steps[0].text | Payroll | step wording changed
+item c3 | $.sections[2].required | Payroll | step made mandatory
+support c1 | c1
+support c2 | c2
+support c3 | c3
+expect c1,c2,c3
+end
+
+case single-item
+pair T-synth v4 v5
+item s1 | $.sections[0].title | Introduction | title reworded
+support only | s1
+expect s1
+end
+
+case many-items
+pair T-synth v5 v9
+item m01 | $.s[0] | A | added
+item m02 | $.s[1] | A | removed
+item m03 | $.s[2] | B | changed
+item m04 | $.s[3] | B | added
+item m05 | $.s[4] | C | changed
+item m06 | $.s[5] | C | removed
+item m07 | $.s[6] | D | added
+item m08 | $.s[7] | D | changed
+item m09 | $.s[8] | E | added
+item m10 | $.s[9] | E | removed
+item m11 | $.s[10] | F | changed
+item m12 | $.s[11] | F | added
+support all | m01,m02,m03,m04,m05,m06,m07,m08,m09,m10,m11,m12
+expect m01,m02,m03,m04,m05,m06,m07,m08,m09,m10,m11,m12
+end
+
+case mixed-add-remove-change
+pair T-synth v9 v10
+item x1 | $.sections[7] | Tax | section added
+item x2 | $.sections[3] | Audit | section removed
+item x3 | $.sections[6].text | Planning | wording changed
+support mixed | x1,x2,x3
+expect x1,x2,x3
+end

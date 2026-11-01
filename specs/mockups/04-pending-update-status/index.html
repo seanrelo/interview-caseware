@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup: Pending update status</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <h1>Pending-update view</h1>
+  <p class="src">Mockup of <a href="../../04-pending-update-status.md">04 Pending update status and decisions</a>. Sample data only.</p>
+</header>
+
+<section class="toolbar" aria-label="Mockup controls">
+  <label>State
+    <select id="state">
+      <option value="normal">Normal</option>
+      <option value="loading">Loading statuses</option>
+      <option value="failed">Status lookup failed</option>
+      <option value="flagoff">Feature disabled for this firm</option>
+    </select>
+  </label>
+  <label class="chk"><input type="checkbox" id="showReq"> Show requirements</label>
+  <button type="button" id="publish">Simulate: publish next version</button>
+  <button type="button" id="withdraw">Simulate: withdraw Audit Standard v9 (EU)</button>
+  <button type="button" id="reset">Reset</button>
+  <span id="stateNote" class="note" role="status"></span>
+</section>
+
+<aside id="mockNote" class="mocknote" role="note" hidden data-req="NFR-41 NFR-42"><strong>Mockup note:</strong> the feature flag is off for this firm, so the product shows nothing (no indicator, no list). The frame below is intentionally empty.</aside>
+
+<main id="main">
+  <h2 id="firmName"></h2>
+  <div id="filters" class="filters" role="group" aria-label="Filter by status" data-req="FR-22"></div>
+  <p id="liveMsg" class="note" role="status"></p>
+  <ul id="list" class="list" aria-label="Engagement Files"></ul>
+  <nav id="pager" class="pager" aria-label="EF list pages" data-req="NFR-14 NFR-24">
+    <button type="button" id="prev">Previous</button>
+    <span id="pageInfo" class="note" aria-live="polite"></span>
+    <button type="button" id="next">Next</button>
+  </nav>
+  <p class="note" data-req="NFR-13 NFR-14">NFR-13 (indicator within 10 s p95) and NFR-14 (list loads within 1 s p95 for 40,000 EFs) are timing targets (to agree); the mockup shows only the loading state.</p>
+</main>
+
+<dialog id="detail" aria-labelledby="dTitle"></dialog>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

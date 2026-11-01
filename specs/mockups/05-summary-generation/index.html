@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup: Summary generation</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <h1>Pending update summary</h1>
+  <p class="src">Mockup of <a href="../../05-summary-generation.md">05 Summary generation</a>. Sample data only.</p>
+</header>
+<section class="toolbar" aria-label="Mockup controls">
+  <label>State
+    <select id="state">
+      <option value="normal">Normal</option>
+      <option value="flagoff">Feature disabled for this firm</option>
+    </select>
+  </label>
+  <label class="chk"><input type="checkbox" id="showReq"> Show requirements</label>
+  <button type="button" id="retry">Simulate: retry succeeds</button>
+  <button type="button" id="reset">Reset</button>
+  <span id="stateNote" class="note" role="status"></span>
+</section>
+<aside id="mockNote" class="mocknote" role="note" hidden data-req="NFR-41 NFR-42"><strong>Mockup note:</strong> the feature flag is off for this firm, so the product shows nothing (no indicator, no summary). The frame below is intentionally empty.</aside>
+
+<main id="main">
+  <h2 id="firmName"></h2>
+  <div class="layout">
+    <section aria-label="Pending updates">
+      <h3>Pending updates</h3>
+      <ul id="list" class="list"></ul>
+    </section>
+    <section id="panel" class="panel" aria-live="polite" aria-label="Update detail"></section>
+  </div>
+</main>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
